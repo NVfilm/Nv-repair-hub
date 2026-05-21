@@ -1,72 +1,779 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NV Hub - Appliance Repair Services</title>
 
-    <div class="features">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-      <div>
-        <i class="fa-solid fa-circle-check"></i>
-        Same Day Repair
-      </div>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
-      <div>
-        <i class="fa-solid fa-circle-check"></i>
-        Affordable Pricing
-      </div>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-      <div>
-        <i class="fa-solid fa-circle-check"></i>
-        Premium Service
-      </div>
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#06141f;
+      color:#fff;
+      overflow-x:hidden;
+    }
 
-      <div>
-        <i class="fa-solid fa-circle-check"></i>
-        Verified Experts
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* Navbar */
+
+    .navbar{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:999;
+      padding:18px 7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(10px);
+    }
+
+    .logo{
+      font-size:32px;
+      font-weight:800;
+      color:#00d9ff;
+    }
+
+    .logo span{
+      color:#fff;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      font-size:15px;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#00d9ff;
+    }
+
+    .call-btn{
+      background:#00d9ff;
+      color:#000;
+      padding:12px 22px;
+      border-radius:30px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .call-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 0 20px #00d9ff;
+    }
+
+    /* Hero Section */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      padding:0 7%;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:700px;
+      animation:fadeIn 1.5s ease;
+    }
+
+    .hero h3{
+      color:#00d9ff;
+      font-size:22px;
+      margin-bottom:15px;
+    }
+
+    .hero h1{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      color:#d8d8d8;
+      line-height:1.8;
+      margin-bottom:35px;
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 30px;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .btn-primary{
+      background:#00d9ff;
+      color:#000;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 25px #00d9ff;
+    }
+
+    .btn-outline{
+      border:2px solid #00d9ff;
+      color:#fff;
+    }
+
+    .btn-outline:hover{
+      background:#00d9ff;
+      color:#000;
+    }
+
+    /* Floating Cards */
+
+    .floating-cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      padding:80px 7%;
+      margin-top:-70px;
+      position:relative;
+      z-index:10;
+    }
+
+    .card{
+      background:#0d2231;
+      padding:35px;
+      border-radius:25px;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(0,217,255,0.3);
+    }
+
+    .card i{
+      font-size:45px;
+      color:#00d9ff;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      font-size:22px;
+    }
+
+    .card p{
+      color:#c9c9c9;
+      line-height:1.7;
+    }
+
+    /* About */
+
+    .about{
+      padding:120px 7%;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:60px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:30px;
+      box-shadow:0 0 40px rgba(0,217,255,0.2);
+    }
+
+    .section-title{
+      color:#00d9ff;
+      font-size:18px;
+      margin-bottom:15px;
+      font-weight:600;
+    }
+
+    .about h2{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    .about p{
+      line-height:1.9;
+      color:#d0d0d0;
+      margin-bottom:20px;
+    }
+
+    .about-list{
+      margin-top:25px;
+    }
+
+    .about-list div{
+      margin-bottom:15px;
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .about-list i{
+      color:#00d9ff;
+      font-size:20px;
+    }
+
+    /* Services */
+
+    .services{
+      padding:100px 7%;
+      background:#081821;
+      text-align:center;
+    }
+
+    .services h2{
+      font-size:50px;
+      margin-bottom:15px;
+    }
+
+    .service-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .service-box{
+      background:#0c2333;
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.4s;
+    }
+
+    .service-box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(0,217,255,0.25);
+    }
+
+    .service-box img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .service-content{
+      padding:30px;
+    }
+
+    .service-content h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .service-content p{
+      color:#d4d4d4;
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+
+    /* Stats */
+
+    .stats{
+      padding:100px 7%;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+      text-align:center;
+    }
+
+    .stat-box{
+      background:#0d2231;
+      padding:45px 20px;
+      border-radius:25px;
+    }
+
+    .stat-box h2{
+      color:#00d9ff;
+      font-size:55px;
+      margin-bottom:10px;
+    }
+
+    /* Contact */
+
+    .contact{
+      padding:100px 7%;
+      background:#081821;
+    }
+
+    .contact-wrapper{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .contact h2{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    .contact p{
+      color:#d0d0d0;
+      line-height:1.8;
+      margin-bottom:25px;
+    }
+
+    .contact-form{
+      background:#0d2231;
+      padding:40px;
+      border-radius:30px;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:16px;
+      margin-bottom:20px;
+      border:none;
+      border-radius:15px;
+      background:#102b3d;
+      color:#fff;
+      font-size:15px;
+    }
+
+    .contact-form textarea{
+      resize:none;
+      height:140px;
+    }
+
+    .contact-form button{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:40px;
+      background:#00d9ff;
+      color:#000;
+      font-size:17px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .contact-form button:hover{
+      transform:translateY(-3px);
+      box-shadow:0 0 25px #00d9ff;
+    }
+
+    /* Footer */
+
+    footer{
+      padding:30px 7%;
+      text-align:center;
+      background:#051018;
+      color:#bbb;
+    }
+
+    /* WhatsApp */
+
+    .whatsapp{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:65px;
+      height:65px;
+      background:#25d366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      font-size:32px;
+      color:#fff;
+      z-index:999;
+      box-shadow:0 0 20px rgba(37,211,102,0.6);
+      animation:pulse 1.5s infinite;
+    }
+
+    /* Animation */
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.1);
+      }
+      100%{
+        transform:scale(1);
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* Responsive */
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:48px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .about h2,
+      .services h2,
+      .contact h2{
+        font-size:38px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      NV <span>Hub</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <a href="tel:8796493504" class="call-btn">
+      Call Now
+    </a>
+
+  </nav>
+
+  <!-- Hero -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h3>Trusted Appliance Repair Experts</h3>
+
+      <h1>
+        AC, Refrigerator &
+        Appliance Repair Services
+      </h1>
+
+      <p>
+        Premium home appliance repair solutions with fast service,
+        expert technicians and affordable pricing. We repair ACs,
+        refrigerators, washing machines, microwaves and all appliances.
+      </p>
+
+      <div class="hero-btns">
+
+        <a href="#contact" class="btn btn-primary">
+          Book Service
+        </a>
+
+        <a href="#services" class="btn btn-outline">
+          Explore Services
+        </a>
+
       </div>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- Floating Cards -->
 
-<section class="contact" id="contact">
+  <section class="floating-cards">
 
-  <div class="contact-card">
+    <div class="card">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <h3>Expert Technicians</h3>
+      <p>Professional appliance repair experts with years of experience.</p>
+    </div>
 
-    <span>BOOK NOW</span>
+    <div class="card">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h3>Trusted Service</h3>
+      <p>100% genuine repairs with customer satisfaction guarantee.</p>
+    </div>
 
-    <h2>
-      Get Instant <br>
-      Repair Support
-    </h2>
+    <div class="card">
+      <i class="fa-solid fa-clock"></i>
+      <h3>Quick Response</h3>
+      <p>Fast same-day service for all major home appliances.</p>
+    </div>
 
-    <form id="bookingForm">
+  </section>
 
-      <input type="text" id="name" placeholder="Your Name" required>
+  <!-- About -->
 
-      <input type="tel" id="phone" placeholder="Phone Number" required>
+  <section class="about" id="about">
 
-      <select id="service">
-        <option>AC Repair</option>
-        <option>Fridge Repair</option>
-        <option>Washing Machine Repair</option>
-        <option>Microwave Repair</option>
-      </select>
+    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1200&auto=format&fit=crop">
 
-      <textarea id="message" placeholder="Describe Your Problem"></textarea>
+    <div>
 
-      <button type="submit">Send on WhatsApp</button>
+      <div class="section-title">ABOUT NV HUB</div>
 
-    </form>
+      <h2>
+        Premium Appliance Repair Services
+      </h2>
 
-  </div>
+      <p>
+        NV Hub provides reliable and professional appliance repair services
+        for homes and businesses. Our skilled technicians specialize in AC,
+        refrigerator, washing machine, microwave and all home appliance repairs.
+      </p>
 
-</section>
+      <p>
+        We focus on quality service, affordable pricing and fast response.
+        Customer satisfaction is our top priority.
+      </p>
 
-<a href="https://wa.me/918796493504" target="_blank" class="whatsapp">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
+      <div class="about-list">
 
-<script src="script.js"></script>
+        <div>
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Affordable Repair Solutions</span>
+        </div>
+
+        <div>
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Highly Skilled Technicians</span>
+        </div>
+
+        <div>
+          <i class="fa-solid fa-circle-check"></i>
+          <span>24/7 Customer Support</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Services -->
+
+  <section class="services" id="services">
+
+    <div class="section-title">OUR SERVICES</div>
+
+    <h2>What We Repair</h2>
+
+    <div class="service-grid">
+
+      <div class="service-box">
+
+        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="service-content">
+
+          <h3>AC Repair</h3>
+
+          <p>
+            Complete AC servicing, gas filling, cooling issue repair and maintenance.
+          </p>
+
+          <a href="#contact" class="btn btn-primary">Book Now</a>
+
+        </div>
+
+      </div>
+
+      <div class="service-box">
+
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="service-content">
+
+          <h3>Refrigerator Repair</h3>
+
+          <p>
+            Expert refrigerator cooling and compressor repair solutions.
+          </p>
+
+          <a href="#contact" class="btn btn-primary">Book Now</a>
+
+        </div>
+
+      </div>
+
+      <div class="service-box">
+
+        <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="service-content">
+
+          <h3>Washing Machine</h3>
+
+          <p>
+            Fast washing machine repair for all major brands and models.
+          </p>
+
+          <a href="#contact" class="btn btn-primary">Book Now</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Stats -->
+
+  <section class="stats">
+
+    <div class="stat-box">
+      <h2>2500+</h2>
+      <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>10+</h2>
+      <p>Years Experience</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>24/7</h2>
+      <p>Customer Support</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>100%</h2>
+      <p>Trusted Service</p>
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+
+  <section class="contact" id="contact">
+
+    <div class="contact-wrapper">
+
+      <div>
+
+        <div class="section-title">CONTACT US</div>
+
+        <h2>
+          Book Your Repair Service Today
+        </h2>
+
+        <p>
+          Fill the form and our team will contact you shortly.
+          Your form details will directly open on WhatsApp.
+        </p>
+
+      </div>
+
+      <div class="contact-form">
+
+        <form id="whatsappForm">
+
+          <input type="text" id="name" placeholder="Your Name" required>
+
+          <input type="tel" id="phone" placeholder="Phone Number" required>
+
+          <textarea id="message" placeholder="Describe Your Problem"></textarea>
+
+          <button type="submit">
+            Send on WhatsApp
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    © 2026 NV Hub | Premium Appliance Repair Services
+  </footer>
+
+  <!-- WhatsApp Button -->
+
+  <a
+    href="https://wa.me/918796493504"
+    class="whatsapp"
+    target="_blank"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- JavaScript -->
+
+  <script>
+
+    const form = document.getElementById("whatsappForm");
+
+    form.addEventListener("submit", function(e){
+
+      e.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let message = document.getElementById("message").value;
+
+      let whatsappMessage =
+      `Hello NV Hub!%0A%0A`
+      + `Name: ${name}%0A`
+      + `Phone: ${phone}%0A`
+      + `Issue: ${message}`;
+
+      let whatsappURL =
+      `https://wa.me/918796493504?text=${whatsappMessage}`;
+
+      window.open(whatsappURL, "_blank");
+
+    });
+
+  </script>
 
 </body>
 </html>
